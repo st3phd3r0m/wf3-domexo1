@@ -1,0 +1,34 @@
+body {
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+body form > div {
+  position: relative;
+}
+
+body form > div > i {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  font-size: 1.5em;
+}
+
+body form input,
+body form button {
+  width: 50vw;
+  font-size: 1.5em;
+  margin-bottom: 5px;
+}
+/*# sourceMappingURL=style.css.map */
