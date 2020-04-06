@@ -4,17 +4,14 @@ window.onload = () => {
     let button = document.querySelector("button");
     button.disabled = true;
 
-
     let form = document.querySelector("form");
     form.addEventListener("input", checkForm);
 
-    // input.addEventListener('input', updateValue);
-
     //Option mots de passe visibles/non-visibles
     let openedEye1 = document.querySelector(".la-eye");
-    openedEye1.addEventListener("click", tooglePasswordVisibility);
+    openedEye1.addEventListener("click", togglePasswordVisibility);
     let openedEye2 = document.querySelectorAll(".la-eye")[1];
-    openedEye2.addEventListener("click", tooglePasswordVisibility);
+    openedEye2.addEventListener("click", togglePasswordVisibility);
 
     //Vérification saisies utilisateur--------------------------------------------------
     //Le pseudo doit faire au moins 5 caractères et prevenir l'utilisateur
@@ -38,11 +35,21 @@ window.onload = () => {
  */
 function verifLongueurMot(event){
     let mot = event.target.value;
+
     if (mot.length < 5) {
         event.target.style.boxShadow = "0 0 1px 1px red";
-        event.target.title = "Le pseudo doit faire au moins 5 caractères !";
+        let par = document.createElement("p");
+        par.textContent ="Le pseudo doit faire au moins 5 caractères";
+        par.style.color = "red";
+        par.style.fontSize = "10px";
+        this.after(par); //préférer appendChild (en encapsulant le input avec div)
+        //la méthode .after est encore expérimentale
     } else if (mot.length >= 5) {
         event.target.style.boxShadow = "0 0 1px 1px green";
+        
+        this.nextElementSibling.remove(); //mais du coup le 1er input email est supprimé
+        
+    
     }
 }
 
@@ -81,12 +88,12 @@ function verifMotsDoublons(){
 /**
  * Fonction qui permet de rendre visible/non-visible le mot de passe de l'utilisateur
  */
-function tooglePasswordVisibility(){
-    if(this.classList[1] == "la-eye"){
+function togglePasswordVisibility(){
+    if(this.classList.contains("la-eye")){
         this.previousElementSibling.type ="text";
         this.classList.remove("la-eye");
         this.classList.add("la-eye-slash");
-    }else if(this.classList[1] == "la-eye-slash"){
+    }else if(this.classList.contains("la-eye-slash")){
         this.previousElementSibling.type ="password";
         this.classList.remove("la-eye-slash");
         this.classList.add("la-eye");
