@@ -18,14 +18,17 @@ body {
                 transform: translateY(-50%);
                 font-size: 1.5em;
             }
+
+            input,
+            button {
+                width: 50vw;
+                font-size: 1.5em;
+                margin-bottom: 5px;
+            }
+
         }
 
-        input,
-        button {
-            width: 50vw;
-            font-size: 1.5em;
-            margin-bottom: 5px;
-        }
+
     }
 
 }
